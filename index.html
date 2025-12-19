@@ -3,33 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宝くじシミュレーター</title>
+    <title>地獄の宝くじシミュレーター</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="container">
-        <h1>宝くじシミュレーター</h1>
-        <div class="input-group">
-            <label for="buyAmount">購入枚数：</label>
-            <input type="number" id="buyAmount" value="1000" min="1">
-            <button id="startBtn">購入する</button>
-        </div>
-
-        <div id="resultArea" class="hidden">
-            <div class="summary-cards">
-                <div class="card">支出<br><span id="spent">0</span>円</div>
-                <div class="card">当選金<br><span id="won">0</span>円</div>
-                <div class="card" id="balanceCard">収支<br><span id="balance">0</span>円</div>
-                <div class="card">還元率<br><span id="rate">0</span>%</div>
+    <div class="game-container">
+        <header>
+            <h1>地獄の宝くじ</h1>
+            <div class="status-bar">
+                <div class="status-label">軍資金: <span id="currentWallet">1,000,000</span>円</div>
+                <div class="progress-container"><div id="walletBar" class="progress-bar"></div></div>
             </div>
-            <div class="details">
-                <h3>当選内訳</h3>
-                <ul id="detailsList"></ul>
+        </header>
+
+        <main>
+            <div class="control-panel">
+                <p>一度に買う枚数を選択してください</p>
+                <div class="button-grid">
+                    <button onclick="play(10)">10枚</button>
+                    <button onclick="play(100)">100枚</button>
+                    <button onclick="play(1000)">1000枚</button>
+                    <button id="allInBtn" onclick="playAllIn()">全財産突っ込む</button>
+                </div>
             </div>
-        </div>
+
+            <div id="displayArea" class="display-area">
+                <div class="main-stats">
+                    <div class="stat-item">合計支出: <span id="totalSpent">0</span>円</div>
+                    <div class="stat-item">合計当選: <span id="totalWon">0</span>円</div>
+                    <div class="stat-item highlight">収支: <span id="balance">0</span>円</div>
+                </div>
+                
+                <div id="commentary" class="commentary">「夢を買う用意はできていますか？」</div>
+                
+                <div id="rankDisplay" class="rank">称号: 一般人</div>
+            </div>
+
+            <div class="log-section">
+                <h3>当選履歴</h3>
+                <ul id="winLog"></ul>
+            </div>
+        </main>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
